@@ -195,7 +195,7 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="block px-6 py-3 text-lg text-gray-300 hover:bg-gray-700 hover:text-red-400 transition-colors duration-200"
+                className="block px-6 py-3 text-lg text-gray-300 hover:bg-gray-700 hover:text-[00adef]transition-colors duration-200"
                 onClick={() => setIsSidebarOpen(false)}
               >
                 {link.label}

@@ -77,12 +77,12 @@ export default function CardStack() {
         </div>
 
         {/* Right Side - Cards */}
-        <div className="relative h-[400px] sm:h-[250px] md:h-[300px] w-full md:w-1/2">
+        <div className="relative h-[400px] sm:h-[250px] md:h-[300px] w-full md:w-1/2 mr-10  ">
           <AnimatePresence>
             {activeCards.map((card, index) => (
               <motion.div
                 key={card.id}
-                className={`absolute inset-0 bg-[#1A1A1A] rounded-lg p-4 sm:p-6 md:p-8 shadow-lg border border-[#3C3C3C] ${
+                className={`absolute inset-0 bg-[#111827] rounded-lg p-4 sm:p-6 md:p-8 shadow-lg border border-[#3C3C3C] ${
                   index === activeCards.length - 1 ? "z-20" : "z-10"
                 }`}
                 initial={{ opacity: 0, x: 50 }}
