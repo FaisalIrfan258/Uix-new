@@ -139,7 +139,7 @@ export default function Navbar() {
                     <Link
                       key={link.href}
                       href={link.href}
-                      className={`text-base sm:text-lg text-gray-600 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-400 whitespace-nowrap transition-all duration-300 ease-in-out ${
+                      className={`text-base sm:text-lg text-gray-600 dark:text-gray-300 hover:text-[#00adef] dark:hover:text-[#00adef] whitespace-nowrap transition-all duration-300 ease-in-out ${
                         isHovered
                           ? "translate-x-0 opacity-100"
                           : "translate-x-full opacity-0"
@@ -158,7 +158,7 @@ export default function Navbar() {
             <ToggleSwitch isChecked={darkMode} onChange={toggleDarkMode} />
 
             <button
-              className="sm:hidden p-3 rounded-md text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-gray-100"
+              className="sm:hidden p-3 rounded-md text-gray-600 dark:text-gray-300 hover:text-[#00adef] dark:hover:text-[#00adef]"
               onClick={() => setIsSidebarOpen(true)}
               aria-label="Open mobile menu"
             >
