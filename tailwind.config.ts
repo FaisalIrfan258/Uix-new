@@ -20,6 +20,9 @@ const config: Config = {
         '50vh': '50vh',
         '100vh': '100vh',
       },
+      gradient: {
+        'custom-gradient': 'linear-gradient(135deg, #00adef 0%, #0074b7 100%)',
+      },
     },
   },
   plugins: [],

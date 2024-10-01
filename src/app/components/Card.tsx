@@ -72,7 +72,9 @@ export default function CardStack() {
         <div className="w-full md:w-1/2 mt-10">
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-600 dark:text-white mb-8 px-2 ml-6 sm:px-0">
             The Process <br /> We Use for <br />
-            <span className="text-[#00adef]">Your Success</span>
+            <span className="text-[#00adef]"
+        
+          >Your Success</span>
           </h2>
         </div>
 

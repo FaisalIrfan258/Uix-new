@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
@@ -11,19 +11,45 @@ export default function ScrollTriggerComponent() {
   const triggerRef = useRef<HTMLElement>(null)
   const circlesRef = useRef<HTMLDivElement>(null)
   const squaresRef = useRef<HTMLDivElement>(null)
+  const textRef = useRef<HTMLHeadingElement>(null)
+  const [fontSize, setFontSize] = useState('10vw')
 
   useEffect(() => {
     const section = sectionRef.current
     const trigger = triggerRef.current
     const circles = circlesRef.current
     const squares = squaresRef.current
+    const text = textRef.current
 
-    if (!section || !trigger || !circles || !squares) return
+    if (!section || !trigger || !circles || !squares || !text) return
+
+    const resizeText = () => {
+      const containerHeight = trigger.clientHeight
+      let size = 8 // Start with a slightly smaller initial size
+      text.style.fontSize = `${size}vw`
+      
+      while (text.scrollHeight <= containerHeight * 0.9 && size < 100) { // Reduce max height to 90%
+        size++
+        text.style.fontSize = `${size}vw`
+      }
+      
+      size--
+      setFontSize(`${size}vw`)
+    }
+
+    resizeText()
+    window.addEventListener('resize', resizeText)
+
+    // Calculate the scroll distance needed to fully reveal the text
+    const textWidth = text.scrollWidth
+    const containerWidth = trigger.clientWidth
+    const scrollDistance = textWidth - containerWidth
 
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: trigger,
         start: 'top top',
+        end: `+=${scrollDistance + containerWidth}`,
         scrub: 1,
         pin: true,
         anticipatePin: 1,
@@ -31,7 +57,7 @@ export default function ScrollTriggerComponent() {
     })
 
     tl.to(section, {
-      translateX: '-100%',
+      x: -scrollDistance,
       ease: 'none',
       duration: 1,
     })
@@ -63,13 +89,14 @@ export default function ScrollTriggerComponent() {
     return () => {
       ScrollTrigger.getAll().forEach(st => st.kill())
       tl.kill()
+      window.removeEventListener('resize', resizeText)
     }
   }, [])
 
   return (
     <section 
       ref={triggerRef} 
-      className="h-screen overflow-hidden bg-[#1A1A1A] relative"
+      className="h-screen overflow-hidden relative mt-32"
     >
       <div 
         ref={circlesRef}
@@ -78,7 +105,7 @@ export default function ScrollTriggerComponent() {
         {[...Array(10)].map((_, i) => (
           <div 
             key={`circle-${i}`}
-            className="absolute w-8 h-8 rounded-full bg-purple-500 opacity-20"
+            className="absolute w-8 h-8 rounded-full bg-gradient-to-br from-[#00adef] to-[#0074b7] opacity-20"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
@@ -93,7 +120,7 @@ export default function ScrollTriggerComponent() {
         {[...Array(10)].map((_, i) => (
           <div 
             key={`square-${i}`}
-            className="absolute w-8 h-8 bg-pink-500 opacity-20"
+            className="absolute w-8 h-8 bg-gradient-to-br from-[#00adef] to-[#0074b7] opacity-20"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
@@ -105,7 +132,11 @@ export default function ScrollTriggerComponent() {
         ref={sectionRef} 
         className="flex items-center h-full whitespace-nowrap"
       >
-        <h2 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 text-transparent bg-clip-text px-4 will-change-transform">
+        <h2 
+          ref={textRef}
+          className="font-bold bg-gradient-to-br from-[#00adef] to-[#0074b7] bg-clip-text text-transparent px-4 will-change-transform"
+          style={{ fontSize }}
+        >
           Building Solutions that shape your business
         </h2>
       </div>
