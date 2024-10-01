@@ -108,9 +108,9 @@ export default function Navbar() {
               <Image
                 src="/uix.png"
                 alt="Logo"
-                width={300}
-                height={300}
-                className="w-auto h-12 sm:h-14"
+                width={600}  // Adjust width here (Increase it from 500 to 600)
+                height={350} // Adjust height here (Increase it from 300 to 350)
+                className="w-auto h-16 sm:h-20" // Adjust the height for small screens too
               />
             </Link>
           </div>

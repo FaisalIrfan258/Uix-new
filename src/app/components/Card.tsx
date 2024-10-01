@@ -69,7 +69,7 @@ export default function CardStack() {
     <div className="flex w-full h-full max-w-6xl mt-24 px-4 sm:px-6 lg:px-8 mx-auto overflow-hidden">
       <div className="flex flex-col w-full md:flex-row items-start">
         {/* Left Side - Heading */}
-        <div className="w-full md:w-1/2">
+        <div className="w-full md:w-1/2 mt-10">
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-600 dark:text-white mb-8 px-2 ml-6 sm:px-0">
             The Process <br /> We Use for <br />
             <span className="text-[#00adef]">Your Success</span>

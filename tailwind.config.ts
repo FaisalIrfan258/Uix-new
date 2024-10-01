@@ -14,6 +14,12 @@ const config: Config = {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      spacing: {
+        '20vh': '20vh',
+        '30vh': '30vh',
+        '50vh': '50vh',
+        '100vh': '100vh',
+      },
     },
   },
   plugins: [],
