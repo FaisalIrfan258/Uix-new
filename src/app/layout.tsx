@@ -1,6 +1,6 @@
 import Navbar from './components/Navbar'; // Adjust the path if necessary
 import { ReactNode } from 'react';
-import './globals.css'; // Ensure your global styles are imported
+    import './globals.css'; // Ensure your global styles are imported
 
 interface LayoutProps {
   children: ReactNode;
