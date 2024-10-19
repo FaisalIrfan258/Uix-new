@@ -72,7 +72,7 @@ const AboutVideo = () => {
   }, []);
 
   return (
-    <div ref={containerRef} className="relative h-[200vh]">
+    <div ref={containerRef} className="m-20 relative h-[200vh]">
       <div ref={contentRef} className="w-full h-screen overflow-hidden">
         <section
           className={`relative px-8 py-28 border rounded-3xl overflow-hidden z-10 h-full
