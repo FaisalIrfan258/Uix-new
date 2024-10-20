@@ -3,6 +3,8 @@
 import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { ChevronRight, Mail } from 'lucide-react'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 export default function HeroComponent() {
   const [isActive, setIsActive] = useState(false)
@@ -10,6 +12,13 @@ export default function HeroComponent() {
   const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
+    // Initialize AOS
+    AOS.init({
+      duration: 1000, // Animation duration in ms
+      easing: 'ease-in-out', // Easing function
+      once: false, // Whether animation should happen only once
+    })
+
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768)
     }
@@ -35,7 +44,12 @@ export default function HeroComponent() {
   return (
     <div className="container mx-auto px-4 py-12 md:py-24">
       <div className="flex flex-col md:flex-row items-center justify-between">
-        <div className="w-full md:w-1/2 mb-8 md:mb-0">
+        {/* Text Section */}
+        <div
+          data-aos="fade-right" // Animate from the left on scroll
+          data-aos-once="false"
+          className="w-full md:w-1/2 mb-8 md:mb-0"
+        >
           <h1 className="text-5xl md:text-8xl lg:text-8xl font-bold mb-8 text-gray-900 dark:text-white leading-tight">
             Bring your<br /> vision <span className='text-[#00adef]'>to life</span>
           </h1>
@@ -85,7 +99,13 @@ export default function HeroComponent() {
             </div>
           </div>
         </div>
-        <div className={`w-full md:w-1/2 transition-all duration-300 ${isActive && isMobile ? 'mt-32' : ''}`}>
+
+        {/* Image Section */}
+        <div
+          data-aos="fade-left" // Animate from the right on scroll
+          data-aos-once="false"
+          className={`w-full md:w-1/2 transition-all duration-300 ${isActive && isMobile ? 'mt-32' : ''}`}
+        >
           <Image
             src="/hero.png"
             alt="Hero image"

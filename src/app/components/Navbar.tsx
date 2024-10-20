@@ -1,11 +1,12 @@
 "use client"
-import { ChangeEventHandler } from 'react';
-
-import { useState, useEffect } from "react"
+import { ChangeEventHandler, useEffect, useState } from 'react';
 import Image from "next/image"
 import Link from "next/link"
 import { Menu, X } from "lucide-react"
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
+// ToggleSwitch Component
 const ToggleSwitch = ({ isChecked, onChange }: { isChecked: boolean, onChange: ChangeEventHandler<HTMLInputElement> }) => {
   return (
     <label className="relative inline-block w-16 h-8 cursor-pointer">
@@ -34,17 +35,17 @@ const ToggleSwitch = ({ isChecked, onChange }: { isChecked: boolean, onChange: C
           <circle cx="6" cy="6" r="2" />
           <g strokeDasharray="1.5 1.5">
           {[0, 45, 90, 135, 180, 225, 270, 315].map((angle, index) => (
-  <polyline 
-    key={index.toString()} 
-    points="6 10,6 11.5" 
-    transform={`rotate(${angle},6,6)`} 
-  />
-))}
+            <polyline 
+              key={index.toString()} 
+              points="6 10,6 11.5" 
+              transform={`rotate(${angle},6,6)`} 
+            />
+          ))}
           </g>
         </g>
       </svg>
       <svg className={`
-        absolute top-1.5 right-1.5 w-5 h-5 text-gray-100 transition-opacity duration-300
+        absolute top-1.5 right-1.5 w-5 h-5 text-slate-400	 transition-opacity duration-300
         ${isChecked ? 'opacity-100' : 'opacity-0'}
       `} viewBox="0 0 12 12" aria-hidden="true">
         <g fill="none" stroke="currentColor" strokeWidth="1" strokeLinejoin="round" transform="rotate(-45,6,6)">
@@ -56,14 +57,15 @@ const ToggleSwitch = ({ isChecked, onChange }: { isChecked: boolean, onChange: C
   );
 };
 
+// Navbar Component
 export default function Navbar() {
   const [isHovered, setIsHovered] = useState(false)
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
   const [darkMode, setDarkMode] = useState(false)
 
   const links = [
-    { href: "", label: "SERVICES" },
     { href: "", label: "BLOGS" },
+    { href: "", label: "SERVICES" },
     { href: "", label: "ABOUT US" },
     { href: "", label: "HOME" },
   ]
@@ -99,23 +101,34 @@ export default function Navbar() {
     }
   }, [isSidebarOpen])
 
+  // Initialize AOS for scroll animations
+  useEffect(() => {
+    AOS.init({
+      duration: 800,
+      easing: 'ease-in-out',
+      once: false,  // Animations should trigger both on scroll down and scroll up
+    });
+  }, []);
+
   return (
     <nav className="top-0 left-0 right-0 z-50 transition-colors duration-300">
       <div className="max-w-full mx-auto px-6 sm:px-8 lg:px-10">
         <div className="flex justify-between items-center h-20">
-          <div className="flex-shrink-0 ml-0 sm:ml-[30px]">
+          {/* Logo Section - Animates from left */}
+          <div className="flex-shrink-0 ml-0 sm:ml-[30px]" data-aos="fade-right" data-aos-offset="200">
             <Link href="/">
               <Image
                 src="/uix.png"
                 alt="Logo"
-                width={600}  // Adjust width here (Increase it from 500 to 600)
-                height={350} // Adjust height here (Increase it from 300 to 350)
-                className="w-auto h-16 sm:h-20" // Adjust the height for small screens too
+                width={600}  // Adjust width here
+                height={350} // Adjust height here
+                className="w-auto h-16 sm:h-20"
               />
             </Link>
           </div>
 
-          <div className="flex items-center mr-0 sm:mr-[30px] space-x-6">
+          {/* Links and Toggle Section - Animates from right */}
+          <div className="flex items-center mr-0 sm:mr-[30px] space-x-6" data-aos="fade-left" data-aos-offset="200">
             <div
               className="relative hidden sm:block"
               onMouseEnter={() => setIsHovered(true)}
@@ -180,23 +193,22 @@ export default function Navbar() {
           }`}
           onClick={(e) => e.stopPropagation()}
         >
-          <div className="flex justify-between items-center p-6 border-b border-gray-700">
-            <h2 className="text-white text-2xl font-semibold">Menu</h2>
+          <div className="p-6 flex items-center justify-between">
+            <span className="text-white font-semibold text-lg">Menu</span>
             <button
+              className="p-3 rounded-md text-white"
               onClick={() => setIsSidebarOpen(false)}
-              className="text-gray-400 hover:text-white"
-              aria-label="Close mobile menu"
             >
-              <X className="h-8 w-8" />
+              <X className="h-8 w-8" aria-hidden="true" />
             </button>
           </div>
-          <div className="py-6">
+
+          <div className="px-6 py-4 space-y-6">
             {links.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="block px-6 py-3 text-lg text-gray-300 hover:bg-gray-700 hover:text-[00adef]transition-colors duration-200"
-                onClick={() => setIsSidebarOpen(false)}
+                className="block text-gray-300 hover:text-white transition-all duration-300"
               >
                 {link.label}
               </Link>
@@ -205,5 +217,5 @@ export default function Navbar() {
         </div>
       </div>
     </nav>
-  )
+  );
 }
