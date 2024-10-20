@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useRef } from "react";
 import axios from "axios";
-import Image from "next/image";
 
 interface HeroData {
   Name: string;
@@ -22,7 +21,7 @@ export default function AboutVideo() {
   // Fetch hero section data
   const fetchHeroSection = async () => {
     try {
-      const response = await axios.get("http://144.24.223.234:1337/hero-section");
+      const response = await axios.get("https://dev-api.hpdc.sa/hero-section?");
       setHeroData(response.data);
       setLoading(false);
     } catch (error) {
@@ -38,8 +37,7 @@ export default function AboutVideo() {
     const handleScroll = () => {
       if (containerRef.current && videoRef.current && contentRef.current) {
         const containerRect = containerRef.current.getBoundingClientRect();
-        const scrollProgress = (window.innerHeight - containerRect.top) / (containerRect.height);
-        const clampedProgress = Math.max(0, Math.min(1, scrollProgress));
+        
 
         // Pin and unpin the content
         if (containerRect.top <= 0 && containerRect.bottom >= window.innerHeight) {
@@ -118,14 +116,7 @@ export default function AboutVideo() {
           >
             {!loading && (
               <>
-                <Image
-                  src="/logo.svg"
-                  alt="Halal DevCo. logo"
-                  width={180}
-                  height={37}
-                  className="absolute top-8 left-8 select-none"
-                  priority
-                />
+            
                 {heroData?.Video?.[0]?.url && (
                   <video
                     src={`http://144.24.223.234:1337${heroData.Video[0].url}`}
