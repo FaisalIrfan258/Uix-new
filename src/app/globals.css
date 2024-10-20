@@ -18,3 +18,23 @@
       animation-range: entry 0% cover 100%;
     }
   }
+  
+  /* For Webkit Browsers (Chrome, Safari, etc.) */
+::-webkit-scrollbar {
+  width: 80px; /* Set the width of the scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: transparent; /* Remove the scrollbar track */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #00adef; /* Set the scrollbar thumb color */
+  border-radius: 8px; /* Add rounded corners to the thumb */
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #00adef transparent; /* Thumb color and transparent track */
+}
