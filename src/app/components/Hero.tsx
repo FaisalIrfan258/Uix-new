@@ -46,7 +46,7 @@ export default function HeroComponent() {
       <div className="flex flex-col md:flex-row items-center justify-between">
         {/* Text Section */}
         <div
-          data-aos="fade-right" // Animate from the left on scroll
+          data-aos="fade-down" // Animate from the left on scroll
           data-aos-once="false"
           className="w-full md:w-1/2 mb-8 md:mb-0"
         >
@@ -102,7 +102,7 @@ export default function HeroComponent() {
 
         {/* Image Section */}
         <div
-          data-aos="fade-left" // Animate from the right on scroll
+          data-aos="fade-up" // Animate from the right on scroll
           data-aos-once="false"
           className={`w-full md:w-1/2 transition-all duration-300 ${isActive && isMobile ? 'mt-32' : ''}`}
         >

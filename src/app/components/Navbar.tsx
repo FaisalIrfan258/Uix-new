@@ -115,7 +115,7 @@ export default function Navbar() {
       <div className="max-w-full mx-auto px-6 sm:px-8 lg:px-10">
         <div className="flex justify-between items-center h-20">
           {/* Logo Section - Animates from left */}
-          <div className="flex-shrink-0 ml-0 sm:ml-[30px]" data-aos="fade-right" data-aos-offset="200">
+          <div className="flex-shrink-0 ml-0 sm:ml-[30px]" data-aos="fade-down" data-aos-offset="200">
             <Link href="/">
               <Image
                 src="/uix.png"
@@ -128,7 +128,7 @@ export default function Navbar() {
           </div>
 
           {/* Links and Toggle Section - Animates from right */}
-          <div className="flex items-center mr-0 sm:mr-[30px] space-x-6" data-aos="fade-left" data-aos-offset="200">
+          <div className="flex items-center mr-0 sm:mr-[30px] space-x-6" data-aos="fade-down" data-aos-offset="200">
             <div
               className="relative hidden sm:block"
               onMouseEnter={() => setIsHovered(true)}

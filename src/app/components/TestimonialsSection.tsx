@@ -22,12 +22,11 @@ interface TestimonialCardProps {
 
 // TestimonialCard component
 const TestimonialCard: React.FC<TestimonialCardProps> = ({ name, role, image, rating, text }) => (
-  <div className="bg-white p-6 rounded-2xl shadow-lg flex flex-col items-start text-left mb-10 mt-10 border border-inherit">
+  <div className="bg-white p-6 rounded-2xl shadow-lg flex flex-col items-start text-left mb-10 mt-10 border border-inherit dark:bg-[#00adef]">
     <div className="flex items-center space-x-4 mb-4">
       <img src={image} alt={name} className="w-16 h-16 rounded-full" />
       <div>
-        <h3 className="text-gray-800 text-lg font-semibold">{name}</h3>
-        <p className="text-blue-600 text-sm">{role}</p>
+        <h3 className="text-gray-800 dark:text-white text-lg font-semibold">{name}</h3>
       </div>
     </div>
     <div className="flex items-center mb-4">
@@ -42,9 +41,9 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({ name, role, image, ra
           <path d="M9.049.755l1.453 4.47h4.92c.363 0 .514.47.22.678l-3.978 2.884 1.453 4.47c.091.281-.237.514-.483.342l-3.978-2.884-3.978 2.884c-.246.172-.574-.061-.483-.342l1.453-4.47-3.978-2.884c-.294-.208-.143-.678.22-.678h4.92L9.049.755c.09-.278.513-.278.604 0z" />
         </svg>
       ))}
-      <span className="ml-2 text-black text-sm font-medium">{rating}</span>
+      <span className="ml-2 text-black dark:text-white text-sm font-medium">{rating}</span>
     </div>
-    <p className="text-gray-500 text-sm">{text}</p>
+    <p className="text-gray-500 dark:text-white text-sm">{text}</p>
   </div>
 );
 
@@ -87,41 +86,42 @@ const TestimonialsSection: React.FC = () => {
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 2000, // 2 seconds
+    arrows:false,
   };
 
   // Testimonials data
   const testimonials: TestimonialCardProps[] = [
     {
       name: "Ahmed",
-      role: "UI/UX Designer",
+      role: "",
       image: "/avatar1.png",
       rating: "5.00",
       text: "As a UI/UX Designer, I specialize in crafting seamless and engaging user experiences through thoughtful design. My role encompasses understanding user needs, creating user-centered designs, and ensuring that each interface is both visually appealing and highly functional.",
     },
     {
       name: "Alizey",
-      role: "Front End Developer",
+      role: "",
       image: "/avatar2.png",
       rating: "5.00",
       text: "As a Front End Developer, I turn design concepts into fully functional, visually engaging websites and applications. My expertise lies in creating responsive, user-friendly interfaces that provide an exceptional user experience across all devices.",
     },
     {
       name: "Fatima",
-      role: "Graphic Designer",
+      role: "",
       image: "/avatar3.png",
       rating: "5.00",
       text: "As a Graphic Designer, I specialize in creating compelling visual content that enhances brand identity and engages audiences. My role involves transforming ideas into striking graphics that communicate messages clearly and effectively.",
     },
     {
       name: "Ali",
-      role: "Marketing Manager",
+      role: "",
       image: "/avatar4.png",
       rating: "5.00",
       text: "As a Marketing Manager, my role is to develop and execute innovative marketing strategies that drive brand awareness, engagement, and revenue growth. I focus on crafting compelling campaigns, analyzing market trends, and leveraging various channels.",
     },
     {
       name: "Sara",
-      role: "Web Developer",
+      role: "",
       image: "/avatar5.png",
       rating: "5.00",
       text: "As a Web Developer, I focus on creating and maintaining high-performance websites and applications that deliver seamless user experiences. My expertise spans both front-end and back-end development, ensuring that every aspect of a web project.",
@@ -133,7 +133,7 @@ const TestimonialsSection: React.FC = () => {
       <div className="container mx-auto text-center">
         {/* Header */}
         <div className="mb-12">
-          <div className="mb-2 flex justify-center">
+          {/* <div className="mb-2 flex justify-center">
             <span
               className="px-6 py-2 text-[22px] font-semibold font-urbanist rounded-[4px] bg-gradient-to-br from-[#00adef] to-[#0074b7] text-white dark:text-white"
             //   style={{
@@ -145,7 +145,7 @@ const TestimonialsSection: React.FC = () => {
             >
               12K+ HAPPY CLIENTS
             </span>
-          </div>
+          </div> */}
           <h2
             className="text-3xl sm:text-4xl md:text-5xl lg:text-[40px] xl:text-[40px] font-bold mb-12 p-2 text-transparent bg-clip-text text-center mt-12"
             style={{

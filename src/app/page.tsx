@@ -5,6 +5,7 @@ import HeroComponent from "./components/Hero";
 import AboutVideo from "./components/AboutVideo";
 import TestimonialsSection from "./components/TestimonialsSection";
 import Footer from "./components/Footer";
+import BlogCard from "./components/BlogCard";
 
 export default function Home() {
   return (
@@ -14,7 +15,7 @@ export default function Home() {
       <AboutComponent />
       <Card />
       <AboutVideo />
-      <TestimonialsSection />
+      <BlogCard />
       <Footer />
       
       </div>

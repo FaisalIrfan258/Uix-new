@@ -18,23 +18,24 @@
       animation-range: entry 0% cover 100%;
     }
   }
-  
-  /* For Webkit Browsers (Chrome, Safari, etc.) */
+ /* width */
 ::-webkit-scrollbar {
-  width: 80px; /* Set the width of the scrollbar */
+  width: 10px;
 }
 
+/* Track */
 ::-webkit-scrollbar-track {
-  background: transparent; /* Remove the scrollbar track */
+  background: #00adef; 
 }
-
+ 
+/* Handle */
 ::-webkit-scrollbar-thumb {
-  background-color: #00adef; /* Set the scrollbar thumb color */
-  border-radius: 8px; /* Add rounded corners to the thumb */
+  background: white;
+  border-radius: 8px;
+  height: 50px; 
 }
 
-/* For Firefox */
-* {
-  scrollbar-width: thin;
-  scrollbar-color: #00adef transparent; /* Thumb color and transparent track */
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
 }
