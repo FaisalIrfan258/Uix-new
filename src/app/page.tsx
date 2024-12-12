@@ -1,11 +1,12 @@
-import Card from "./components/Card";
+import AboutCard from "./components/AboutCard";
 import ScrollComponent from "./components/ScrollTrigger";
 import AboutComponent from "./components/AboutComponent";
 import HeroComponent from "./components/Hero";
 import AboutVideo from "./components/AboutVideo";
 import TestimonialsSection from "./components/TestimonialsSection";
 import Footer from "./components/Footer";
-import BlogCard from "./components/BlogCard";
+import BlogSlider from "./components/BlogCard";
+import Services from "./components/Services";
 
 export default function Home() {
   return (
@@ -13,9 +14,10 @@ export default function Home() {
       <HeroComponent />
       <ScrollComponent />
       <AboutComponent />
-      <Card />
+      <AboutCard />
       <AboutVideo />
-      <BlogCard />
+      <Services />
+      <BlogSlider />
       <Footer />
       
       </div>
