@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 const AboutComponent: React.FC = () => {
   return (
-    <div className="text-black dark:text-white py-20 px-10 text-center mt-16">
+    <div id="about" className="text-black dark:text-white py-20 px-10 text-center mt-16">
       <h2 className="text-5xl mb-8">Empowering Innovation Through Technology</h2>
       <p className="max-w-3xl mx-auto">
         At <strong>UIX</strong>, we specialize in providing cutting-edge technology solutions tailored to businesses of all sizes. 

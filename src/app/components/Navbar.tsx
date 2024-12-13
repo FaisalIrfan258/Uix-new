@@ -64,10 +64,10 @@ export default function Navbar() {
   const [darkMode, setDarkMode] = useState(false)
 
   const links = [
-    { href: "", label: "BLOGS" },
-    { href: "", label: "SERVICES" },
-    { href: "", label: "ABOUT US" },
-    { href: "", label: "HOME" },
+    { href: "#blog", label: "BLOGS" },
+    { href: "#services", label: "SERVICES" },
+    { href: "#about", label: "ABOUT US" },
+    { href: "#home", label: "HOME" },
   ]
 
   useEffect(() => {

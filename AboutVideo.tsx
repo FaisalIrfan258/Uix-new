@@ -116,7 +116,7 @@ const AboutVideo = () => {
               <>
                 <Image
                   src="/logo.svg"
-                  alt="Halal DevCo. logo"
+                  alt="uix . logo"
                   width={180}
                   height={37}
                   className="absolute top-8 left-8 select-none"

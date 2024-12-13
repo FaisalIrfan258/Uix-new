@@ -91,7 +91,7 @@ const Footer = () => {
           <motion.img
             whileHover={{ scale: 1.05 }}
             src="/uix.png"
-            alt="Halal DevCo. logo"
+            alt="Uix. logo"
             width={180}
             height={37}
             className="mt-1 cursor-pointer"

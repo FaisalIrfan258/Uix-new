@@ -77,9 +77,9 @@ export default function Services() {
     }, [])
   
     return (
-        <section 
+        <section id='services'
             ref={servicesRef} 
-            className="py-20 overflow-hidden"
+            className="py-20 overflow-hidden "
         >
             <div className="container mx-auto px-4">
                 <motion.h2 
