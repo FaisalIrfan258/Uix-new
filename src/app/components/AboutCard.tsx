@@ -6,6 +6,7 @@ import { ChevronRight } from 'lucide-react'
 import { Card, CardContent } from "@/components/ui/card"
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
+import Image from 'next/image'
 
 // Register GSAP ScrollTrigger
 gsap.registerPlugin(ScrollTrigger)
@@ -22,25 +23,57 @@ const cardData: CardData[] = [
     id: 1,
     title: "Discovery",
     description: "We conduct in-depth research to understand your business goals, target audience, and market landscape. This phase lays the groundwork for a strategy tailored specifically to your needs.",
-    icon: <img src="/uix.png" alt="Discovery Icon" className="w-12 h-12 rounded-full" />
+    icon: (
+      <Image 
+        src="/uix.png" 
+        alt="Discovery Icon" 
+        width={48} 
+        height={48} 
+        className="rounded-full" 
+      />
+    )
   },
   {
     id: 2,
     title: "Strategy",
     description: "With a thorough understanding of your business, we create a customized roadmap that outlines every step needed to achieve your objectives effectively and efficiently.",
-    icon: <img src="/uix.png" alt="Strategy Icon" className="w-12 h-12 rounded-full" />
+    icon: (
+      <Image 
+        src="/uix.png" 
+        alt="Strategy Icon" 
+        width={48} 
+        height={48} 
+        className="rounded-full" 
+      />
+    )
   },
   {
     id: 3,
     title: "Implementation",
     description: "Our expert team works diligently to bring your vision to life using innovative tools and technologies. We ensure that every detail is executed flawlessly.",
-    icon: <img src="/uix.png" alt="Implementation Icon" className="w-12 h-12 rounded-full" />
+    icon: (
+      <Image 
+        src="/uix.png" 
+        alt="Implementation Icon" 
+        width={48} 
+        height={48} 
+        className="rounded-full" 
+      />
+    )
   },
   {
     id: 4,
     title: "Optimization",
     description: "We monitor performance metrics and gather feedback to refine and enhance your solutions continually, ensuring sustained growth and success.",
-    icon: <img src="/uix.png" alt="Optimization Icon" className="w-12 h-12 rounded-full" />
+    icon: (
+      <Image 
+        src="/uix.png" 
+        alt="Optimization Icon" 
+        width={48} 
+        height={48} 
+        className="rounded-full" 
+      />
+    )
   }
 ]
 

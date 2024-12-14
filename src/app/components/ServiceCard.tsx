@@ -4,7 +4,6 @@ import { motion } from 'framer-motion'
 import { IconType } from 'react-icons'
 import { useRef, useEffect, useState } from 'react'
 import gsap from 'gsap'
-import { FaCode, FaMobile, FaSearch, FaPaintBrush, FaRobot } from 'react-icons/fa'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 // Register ScrollTrigger plugin

@@ -137,7 +137,7 @@ export default function ScrollTriggerComponent() {
           className="font-bold bg-gradient-to-br from-[#00adef] to-[#0074b7] bg-clip-text text-transparent px-4 will-change-transform"
           style={{ fontSize }}
         >
-          Building Solutions that shape your business
+          Shapping Businesses
         </h2>
       </div>
     </section>

@@ -1,6 +1,18 @@
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
 
+interface ContentBlock {
+  type: 'heading' | 'paragraph' | 'image'
+  level?: number // For heading blocks
+  children: { text: string }[]
+  image?: {
+    url: string
+    alternativeText?: string
+    width: number
+    height: number
+  }
+}
+
 async function getBlogPost(id: string) {
   const res = await fetch(`https://api.360xpertsolutions.com/api/blogs/${id}`)
   if (!res.ok) {
@@ -31,7 +43,7 @@ export default async function BlogPost({ params }: { params: { id: string } }) {
         <p className='dark:text-white'>By {author}</p>
         <p className='dark:text-white'>{new Date(publicationDate).toLocaleDateString()}</p>
       </div>
-      {content.map((block: any, index: number) => {
+      {content.map((block: ContentBlock, index: number) => {
         switch (block.type) {
           case 'heading':
             const HeadingTag = `h${block.level}` as keyof JSX.IntrinsicElements
@@ -42,10 +54,10 @@ export default async function BlogPost({ params }: { params: { id: string } }) {
             return (
               <div key={index} className="my-4 dark:text-white">
                 <Image
-                  src={block.image.url}
-                  alt={block.image.alternativeText || ''}
-                  width={block.image.width}
-                  height={block.image.height}
+                  src={block.image!.url}
+                  alt={block.image?.alternativeText || ''}
+                  width={block.image!.width}
+                  height={block.image!.height}
                   layout="responsive"
                 />
               </div>
@@ -57,4 +69,3 @@ export default async function BlogPost({ params }: { params: { id: string } }) {
     </article>
   )
 }
-

@@ -3,8 +3,8 @@ import ScrollComponent from "./components/ScrollTrigger";
 import AboutComponent from "./components/AboutComponent";
 import HeroComponent from "./components/Hero";
 import AboutVideo from "./components/AboutVideo";
-import TestimonialsSection from "./components/TestimonialsSection";
-import Footer from "./components/Footer";
+// import TestimonialsSection from "./components/TestimonialsSection";
+// import Footer from "./components/Footer";
 import BlogSlider from "./components/BlogCard";
 import Services from "./components/Services";
 
@@ -18,7 +18,6 @@ export default function Home() {
       <AboutVideo />
       <Services />
       <BlogSlider />
-      <Footer />
       
       </div>
   );

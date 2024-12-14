@@ -1,7 +1,7 @@
 'use client'
 import { useRef, useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
-import { FaCode, FaMobile, FaSearch, FaPaintBrush, FaRobot } from 'react-icons/fa'
+import { FaCode, FaMobile, FaSearch,  FaFilm, FaBullhorn, FaClipboard } from 'react-icons/fa';
 import { ServiceCard } from './ServiceCard' // Ensure the correct import path
 import gsap from 'gsap'
 
@@ -23,25 +23,30 @@ export default function Services() {
             videoUrl: '/videos/mobile.mp4'
         },
         { 
+            icon: FaFilm, 
+            title: 'Graphic Designing and Video Editing', 
+            description: 'Creating stunning graphics and editing videos to enhance your brand’s visual storytelling.',
+            videoUrl: '/videos/graphic.mp4'
+        },
+        { 
+            icon: FaClipboard, // Updated icon for CMS Development
+            title: 'CMS Development', 
+            description: 'Building innovative mobile applications for iOS and Android platforms.',
+            videoUrl: '/videos/cms.mp4'
+        },
+        { 
             icon: FaSearch, 
             title: 'SEO', 
             description: 'Optimizing your digital presence to improve visibility and organic traffic.',
             videoUrl: '/videos/seo.mp4'
         },
         { 
-            icon: FaPaintBrush, 
+            icon: FaBullhorn, // Updated icon for Brand Building
             title: 'Brand Building', 
             description: 'Creating compelling brand identities that resonate with your target audience.',
             videoUrl: '/videos/brand.mp4'
         },
-        { 
-            icon: FaRobot, 
-            title: 'AI & ML', 
-            description: 'Leveraging artificial intelligence and machine learning to solve complex problems.',
-            videoUrl: '/videos/Ai.mp4'
-        },
     ]
-  
     useEffect(() => {
         const section = servicesRef.current
         if (!section) return
@@ -83,7 +88,7 @@ export default function Services() {
         >
             <div className="container mx-auto px-4">
                 <motion.h2 
-                    className={`dark:text-[#00adef] text-4xl md:text-5xl font-bold text-center mb-12 transition-all duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
+                    className={`text-[#00adef] text-4xl md:text-5xl font-bold text-center mb-12 transition-all duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
                     style={{
                         transform: isVisible ? 'translateY(0)' : 'translateY(-50px)',
                         opacity: isVisible ? 1 : 0

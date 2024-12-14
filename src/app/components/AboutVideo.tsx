@@ -1,33 +1,29 @@
 'use client';
 
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 
 export default function AboutVideo() {
   const containerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
-  const [loading, setLoading] = useState(false);
 
-  // Hardcoded data
+  // Updated hardcoded data
   const heroData = {
-    Name: "Bring Your Ideas ",
-    gradient: "to Life",
-    description: "Transform your visions into reality with cutting-edge solutions.",
-    buttonText: "Learn More",
-    Video: [{ url: "uix.mp4" }], // Update with your actual video path
+    description: "Bring Your Ideas to Life. Transform your visions into reality with cutting-edge solutions.",
+    Video: [{ url: "/videos/uix.mp4" }], // Update with your actual video path
   };
 
   useEffect(() => {
     const handleScroll = () => {
       if (containerRef.current && videoRef.current && contentRef.current) {
         const containerRect = containerRef.current.getBoundingClientRect();
-
+    
         // Pin and unpin the content
         if (containerRect.top <= 0 && containerRect.bottom >= window.innerHeight) {
           contentRef.current.style.position = 'fixed';
           contentRef.current.style.top = '0';
           contentRef.current.style.width = `${containerRect.width}px`;
-
+    
           // Only start revealing the video when the content is pinned
           const pinnedScrollProgress = -containerRect.top / (containerRect.height - window.innerHeight);
           const clampedPinnedProgress = Math.max(0, Math.min(1, pinnedScrollProgress));
@@ -57,29 +53,16 @@ export default function AboutVideo() {
   }, []);
 
   return (
-    <div ref={containerRef} className="mt-24 ml-24 mr-24 relative h-[200vh]">
+    <div ref={containerRef} className="mt-24 mb-24 ml-24 mr-24 relative h-[200vh]">
       <div ref={contentRef} className="w-full h-screen overflow-hidden">
-      <section
-  className={`relative px-8 py-28 border rounded-3xl overflow-hidden z-10 h-full bg-[#00adef]/50`}
->
-  <div className="space-y-8">
-    <>
-      <h1 className="text-3xl dark:text-white sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-light">
-        {heroData.Name}
-        <span className="text-3xl dark:text-white sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-light">
-          {heroData.gradient}
-        </span>
-      </h1>
-      <p className="text-3xl dark:text-white sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-light">
-        {heroData.description}
-      </p>
-      <button
-        className="bg-primary-gradient text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl text-black px-6 py-2 rounded-full"
-      >
-        {heroData.buttonText}
-      </button>
-    </>
-  </div>
+        <section
+          className="relative px-8 py-28 border rounded-3xl overflow-hidden z-10 h-full flex flex-col justify-center items-center"
+        >
+          <div className="space-y-8">
+            <h1 className="text-3xl text-[#00adef] sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold leading-loose text-center">
+              {heroData.description}
+            </h1>
+          </div>
 
           {/* Masked Video Section */}
           <div
