@@ -106,3 +106,15 @@
 
 
 
+.footerContainer {
+  transition: transform 0.3s ease-in-out;
+}
+
+.footerHidden {
+  transform: translateY(100%);
+}
+
+.footerVisible {
+  transform: translateY(0);
+}
+

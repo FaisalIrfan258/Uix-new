@@ -1,10 +1,19 @@
 "use client";
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from "next/link";
-import { motion } from 'framer-motion';
-import { Facebook, Twitter, Linkedin } from 'lucide-react';
+import { motion, useAnimation } from 'framer-motion';
+import { Facebook, Linkedin, Instagram } from 'lucide-react';
+import { useInView } from 'react-intersection-observer';
 
 const Footer = () => {
+  const [scrollDirection, setScrollDirection] = useState("down");
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const controls = useAnimation();
+  const [ref, inView] = useInView({
+    triggerOnce: false,
+    threshold: 0.1,
+  });
+
   // Hardcoded data
   const data = {
     links: [
@@ -36,17 +45,47 @@ const Footer = () => {
   const footerLinks = {
     social_network: [
       { href: "https://facebook.com", name: "Facebook", icon: Facebook },
-      { href: "https://twitter.com", name: "Twitter", icon: Twitter },
       { href: "https://linkedin.com", name: "LinkedIn", icon: Linkedin },
+      { href: "https://instagram.com", name: "Instagram", icon: Instagram },
     ],
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      if (currentScrollY > lastScrollY) {
+        setScrollDirection("down");
+      } else {
+        setScrollDirection("up");
+      }
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
+
+  useEffect(() => {
+    if (inView) {
+      controls.start("visible");
+    } else {
+      controls.start("hidden");
+    }
+  }, [controls, inView]);
+
   // Variants for animated elements
   const containerVariants = {
-    hidden: { opacity: 0 },
+    hidden: { 
+      opacity: 0,
+      y: scrollDirection === "down" ? 100 : -100
+    },
     visible: {
       opacity: 1,
+      y: 0,
       transition: {
+        type: "spring",
+        damping: 15,
+        stiffness: 100,
         delayChildren: 0.3,
         staggerChildren: 0.2
       }
@@ -80,26 +119,26 @@ const Footer = () => {
 
   return (
     <motion.footer 
+      ref={ref}
       initial="hidden"
-      animate="visible"
+      animate={controls}
       variants={containerVariants}
-      // Added margin classes to all sides
-      className="p-12 m-4 md:m-6 lg:m-8 flex flex-col lg:flex-row items-start gap-x-36 gap-y-10 bg-secondary-gradient rounded-3xl bg-gradient-to-br from-[#00adef] to-[#0074b7] overflow-hidden"
+      className="p-12 m-4 md:m-6 lg:m-8 flex flex-col lg:flex-row items-start justify-between gap-x-8 gap-y-10 bg-secondary-gradient rounded-3xl bg-gradient-to-br from-[#00adef] to-[#0074b7] overflow-hidden"
     >
-      <motion.div variants={itemVariants}>
+      <motion.div variants={itemVariants} className="w-full lg:w-auto">
         <Link href={"/"}>
           <motion.img
             whileHover={{ scale: 1.05 }}
-            src="/uix.png"
+            src="/uix-white.png"
             alt="Uix. logo"
-            width={180}
-            height={37}
+            width={250}
+            height={100}
             className="mt-1 cursor-pointer"
           />
         </Link>
       </motion.div>
       
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 w-full">
+      <div className="ml-32 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 w-full">
         {data.links.map((linkItem, linkIndex) => (
           <motion.div 
             variants={itemVariants} 
@@ -172,3 +211,4 @@ const Footer = () => {
 };
 
 export default Footer;
+
