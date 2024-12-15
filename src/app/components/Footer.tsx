@@ -172,7 +172,7 @@ const Footer = () => {
                       <Link href={social.href} aria-label={social.name}>
                         <motion.div variants={socialIconVariants}>
                           <SocialIcon 
-                            className="text-white hover:text-blue-200 transition-colors"
+                            className="text-white hover:text-white-200 transition-colors"
                             size={24} 
                           />
                         </motion.div>
