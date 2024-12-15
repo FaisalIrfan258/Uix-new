@@ -21,17 +21,17 @@ const Footer = () => {
         id: 1,
         title: "Company",
         footLinks: [
-          { id: 1, footLinkHref: "/about", footLink: "About Us" },
-          { id: 2, footLinkHref: "/services", footLink: "Services" },
-          { id: 3, footLinkHref: "/contact", footLink: "Contact" },
+          { id: 1, footLinkHref: "/#about", footLink: "About Us" },
+          { id: 2, footLinkHref: "/#services", footLink: "Services" },
+          { id: 3, footLinkHref: "/#contact", footLink: "Contact" },
         ],
       },
       {
         id: 2,
         title: "Resources",
         footLinks: [
-          { id: 4, footLinkHref: "/blog", footLink: "Blog" },
-          { id: 5, footLinkHref: "/faqs", footLink: "FAQs" },
+          { id: 4, footLinkHref: "/#blog", footLink: "Blog" },
+          { id: 5, footLinkHref: "/#faqs", footLink: "FAQs" },
         ],
       },
       {
