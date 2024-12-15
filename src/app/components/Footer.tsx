@@ -119,12 +119,17 @@ const Footer = () => {
 
   return (
     <motion.footer 
-      ref={ref}
-      initial="hidden"
-      animate={controls}
-      variants={containerVariants}
-      className="p-12 m-4 md:m-6 lg:m-8 flex flex-col lg:flex-row items-start justify-between gap-x-8 gap-y-10 bg-secondary-gradient rounded-3xl bg-gradient-to-br from-[#00adef] to-[#0074b7] overflow-hidden"
-    >
+    ref={ref}
+    initial="hidden"
+    animate={controls}
+    variants={containerVariants}
+    className="p-12 m-4 md:m-6 lg:m-8 flex flex-col lg:flex-row items-start justify-between gap-x-8 gap-y-10 rounded-3xl overflow-hidden"
+    style={{
+      backgroundImage: "url('/footerbanner.jpeg')",
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+    }}
+  >
       <motion.div variants={itemVariants} className="w-full lg:w-auto">
         <Link href={"/"}>
           <motion.img
@@ -138,7 +143,7 @@ const Footer = () => {
         </Link>
       </motion.div>
       
-      <div className="ml-32 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 w-full">
+      <div className="ml-32 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  w-full">
         {data.links.map((linkItem, linkIndex) => (
           <motion.div 
             variants={itemVariants} 
