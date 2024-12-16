@@ -1,9 +1,9 @@
 "use client";
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import { motion, useAnimation } from 'framer-motion';
-import { Facebook, Linkedin, Instagram } from 'lucide-react';
-import { useInView } from 'react-intersection-observer';
+import { motion, useAnimation } from "framer-motion";
+import { Facebook, Linkedin, Instagram, Mail } from "lucide-react";
+import { useInView } from "react-intersection-observer";
 
 const Footer = () => {
   const [scrollDirection, setScrollDirection] = useState("down");
@@ -14,7 +14,6 @@ const Footer = () => {
     threshold: 0.1,
   });
 
-  // Hardcoded data
   const data = {
     links: [
       {
@@ -30,14 +29,14 @@ const Footer = () => {
         id: 2,
         title: "Resources",
         footLinks: [
-          { id: 4, footLinkHref: "/#blog", footLink: "Blog" },
-          { id: 5, footLinkHref: "/#faqs", footLink: "FAQs" },
+          { id: 4, footLinkHref: "/allblogs", footLink: "Blog" }, // Blog Link
+          { id: 5, footLinkHref: "/faq", footLink: "FAQs" },     // FAQs Link
         ],
       },
       {
         id: 4,
         title: "Social",
-        footLinks: [], // This will be for social networks
+        footLinks: [],
       },
     ],
   };
@@ -53,11 +52,7 @@ const Footer = () => {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      if (currentScrollY > lastScrollY) {
-        setScrollDirection("down");
-      } else {
-        setScrollDirection("up");
-      }
+      setScrollDirection(currentScrollY > lastScrollY ? "down" : "up");
       setLastScrollY(currentScrollY);
     };
 
@@ -66,19 +61,11 @@ const Footer = () => {
   }, [lastScrollY]);
 
   useEffect(() => {
-    if (inView) {
-      controls.start("visible");
-    } else {
-      controls.start("hidden");
-    }
+    controls.start(inView ? "visible" : "hidden");
   }, [controls, inView]);
 
-  // Variants for animated elements
   const containerVariants = {
-    hidden: { 
-      opacity: 0,
-      y: scrollDirection === "down" ? 100 : -100
-    },
+    hidden: { opacity: 0, y: scrollDirection === "down" ? 100 : -100 },
     visible: {
       opacity: 1,
       y: 0,
@@ -87,9 +74,9 @@ const Footer = () => {
         damping: 15,
         stiffness: 100,
         delayChildren: 0.3,
-        staggerChildren: 0.2
-      }
-    }
+        staggerChildren: 0.2,
+      },
+    },
   };
 
   const itemVariants = {
@@ -97,40 +84,33 @@ const Footer = () => {
     visible: {
       y: 0,
       opacity: 1,
-      transition: {
-        type: "spring",
-        damping: 12,
-        stiffness: 200
-      }
-    }
+      transition: { type: "spring", damping: 12, stiffness: 200 },
+    },
   };
 
   const socialIconVariants = {
     rest: { scale: 1, rotate: 0 },
-    hover: { 
-      scale: 1.2, 
+    hover: {
+      scale: 1.2,
       rotate: 360,
-      transition: {
-        type: "spring",
-        stiffness: 300
-      }
-    }
+      transition: { type: "spring", stiffness: 300 },
+    },
   };
 
   return (
-    <motion.footer 
-    ref={ref}
-    initial="hidden"
-    animate={controls}
-    variants={containerVariants}
-    className="p-12 m-4 md:m-6 lg:m-8 flex flex-col lg:flex-row items-start justify-between gap-x-8 gap-y-10 rounded-3xl overflow-hidden"
-    style={{
-      backgroundImage: "url('/footerbanner.jpeg')",
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
-    }}
-  >
-      <motion.div variants={itemVariants} className="w-full lg:w-auto">
+    <motion.footer
+      ref={ref}
+      initial="hidden"
+      animate={controls}
+      variants={containerVariants}
+      className="p-12 m-4 md:m-6 lg:m-8 flex flex-col lg:flex-row items-start justify-between gap-x-8 gap-y-10 rounded-3xl overflow-hidden"
+      style={{
+        backgroundImage: "url('/footerbanner.jpeg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
+      <motion.div variants={itemVariants} className="w-full lg:w-auto flex flex-col">
         <Link href={"/"}>
           <motion.img
             whileHover={{ scale: 1.05 }}
@@ -141,28 +121,33 @@ const Footer = () => {
             className="mt-1 cursor-pointer"
           />
         </Link>
+        <motion.div variants={itemVariants} className="text-white mt-4 flex items-center space-x-2">
+          <Mail size={20} />
+          <a
+            href="mailto:connect@uixservices.com"
+            className="hover:text-cyan-200 transition-colors"
+          >
+            connect@uixservices.com
+          </a>
+        </motion.div>
+        <motion.p variants={itemVariants} className="text-white mt-2 text-sm">
+          © {new Date().getFullYear()} Uix Services. All Rights Reserved.
+        </motion.p>
       </motion.div>
-      
+
       <div className="ml-32 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  w-full">
         {data.links.map((linkItem, linkIndex) => (
-          <motion.div 
-            variants={itemVariants} 
-            className="space-y-4" 
-            key={linkItem.id}
-          >
-            <motion.h3 
-              variants={itemVariants}
-              className="font-semibold text-2xl text-white"
-            >
+          <motion.div variants={itemVariants} className="space-y-4" key={linkItem.id}>
+            <motion.h3 variants={itemVariants} className="font-semibold text-2xl text-white">
               {linkItem.title}
             </motion.h3>
-            
+
             {linkIndex === data.links.length - 1 ? (
               <ul className="flex flex-wrap gap-6">
                 {footerLinks.social_network.map((social, index) => {
                   const SocialIcon = social.icon;
                   return (
-                    <motion.li 
+                    <motion.li
                       key={index}
                       variants={itemVariants}
                       whileHover="hover"
@@ -171,10 +156,7 @@ const Footer = () => {
                     >
                       <Link href={social.href} aria-label={social.name}>
                         <motion.div variants={socialIconVariants}>
-                          <SocialIcon 
-                            className="text-white hover:text-white-200 transition-colors"
-                            size={24} 
-                          />
+                          <SocialIcon className="text-white hover:text-white-200 transition-colors" size={24} />
                         </motion.div>
                       </Link>
                     </motion.li>
@@ -183,29 +165,20 @@ const Footer = () => {
               </ul>
             ) : (
               <ul className="flex flex-col space-y-2">
-                {linkItem.footLinks.map((link) =>
-                  link.footLinkHref !== null ? (
-                    <motion.li 
-                      key={link.id}
-                      variants={itemVariants}
-                      whileHover={{ x: 10, color: '#00ffff' }}
-                    >
-                      <Link 
-                        href={link.footLinkHref} 
-                        className="text-white hover:text-cyan-200 transition-colors"
-                      >
-                        {link.footLink}
-                      </Link>
-                    </motion.li>
-                  ) : (
-                    <motion.li 
-                      key={link.id}
-                      variants={itemVariants}
+                {linkItem.footLinks.map((link) => (
+                  <motion.li
+                    key={link.id}
+                    variants={itemVariants}
+                    whileHover={{ x: 10, color: "#00ffff" }}
+                  >
+                    <Link
+                      href={link.footLinkHref}
+                      className="text-white hover:text-cyan-200 transition-colors"
                     >
                       {link.footLink}
-                    </motion.li>
-                  )
-                )}
+                    </Link>
+                  </motion.li>
+                ))}
               </ul>
             )}
           </motion.div>
@@ -216,4 +189,3 @@ const Footer = () => {
 };
 
 export default Footer;
-

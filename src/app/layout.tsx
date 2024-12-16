@@ -15,7 +15,7 @@ export default function RootLayout({ children }: LayoutProps) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </head>
-      <body className="bg-white dark:bg-gray-900"> {/* Tailwind classes for dark mode */}
+      <body className="dark:bg-gray-900"> {/* Tailwind classes for dark mode */}
         <Navbar />
         <main>{children}</main>
         <Footer />
