@@ -42,7 +42,7 @@ export default function HeroComponent() {
   }
 
   return (
-    <div id="home" className="container mx-auto px-4 py-12 md:py-24">
+    <div id="home" className="container mx-auto px-4 py-12 md:py-24 bg[#f5f5f5]">
       <div className="flex flex-col md:flex-row items-center justify-between">
         {/* Text Section */}
         <div
