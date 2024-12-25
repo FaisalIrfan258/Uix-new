@@ -81,7 +81,7 @@ export default function BlogCard() {
       </h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
         {blogPosts.map((post) => (
-          <Link key={post.id} href={`/blog/${post.id}`}>
+          <Link key={post.id} href={`/blogs/blog/${post.id}`}>
             <div className="group grid grid-cols-1 gap-4 p-4 transition-all duration-300 rounded-lg shadow-md hover:shadow-lg bg-[#f5f5f5] dark:bg-gray-800 cursor-pointer">
               {post.imageUrl && (
                 <div className="relative w-full h-48 overflow-hidden rounded-t-lg">
@@ -108,7 +108,7 @@ export default function BlogCard() {
       
       <div className="flex justify-center">
         <Link 
-          href="/allblogs" 
+          href="/blogs/allblogs" 
           className="group relative inline-block px-6 py-3 font-bold text-white rounded-lg overflow-hidden"
         >
           <span className="absolute inset-0 bg-[#00adef] transform -skew-x-12 -translate-x-full group-hover:translate-x-0 transition duration-300"></span>

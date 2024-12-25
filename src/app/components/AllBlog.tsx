@@ -73,7 +73,7 @@ export default function AllBlog() {
       <h1 className="text-[#00adef] text-4xl md:text-5xl font-bold text-center mb-8 ">Our Blogs</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {blogPosts.map((post) => (
-          <Link key={post.id} href={`/blog/${post.id}`}>
+          <Link key={post.id} href={`/blogs/blog/${post.id}`}>
             <div className="group grid grid-cols-1 gap-4 p-4 transition-all duration-300 rounded-lg shadow-md hover:shadow-lg bg-white dark:bg-gray-800 cursor-pointer">
               {post.imageUrl && (
                 <div className="relative w-full h-48 overflow-hidden rounded-t-lg">
