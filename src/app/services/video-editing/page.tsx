@@ -12,7 +12,7 @@ export default function VideoEditing() {
   }
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen dark:text-white">
       <motion.header
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
